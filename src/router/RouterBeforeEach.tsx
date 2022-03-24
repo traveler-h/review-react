@@ -1,0 +1,27 @@
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { Outlet } from 'react-router-dom'
+import { checkRouterAuth } from './index'
+import { useEffect, useState } from 'react'
+
+const RouterBeforeEach = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const [auth, setAuth] = useState(false)
+    useEffect(() => {
+        let obj = checkRouterAuth(location.pathname)
+        let blLogin = sessionStorage.getItem('login')
+        // if (obj?.auth && blLogin !== 'true') {
+        if (obj?.auth ) {
+            setAuth(true)
+            navigate(location.pathname)
+        // } else if(blLogin !== 'true') {
+        //     setAuth(false)
+        //     navigate('/login') // 没登录跳到login
+        } else {
+            setAuth(false) // 登录后没权限跳到null
+        }
+    }, [location.pathname, navigate])
+    return auth ? <Outlet /> : <Navigate replace to="/login" />
+}
+
+export default RouterBeforeEach
