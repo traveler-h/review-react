@@ -7,6 +7,7 @@ import { changeCity } from '../store/actions/city'
     const [cityList] = useState<Array<string>>(["北京", "上海", "广州", "深圳"])
     const handleClick = (city: string) => {
         props.changeCity(city)
+        // 路由跳转
         navigate('/', { replace: false })
     }
     return (
@@ -22,6 +23,8 @@ import { changeCity } from '../store/actions/city'
 
 //使用connect()()创建并暴露一个Count的容器组件
 export default connect(
-    state => state,
+    (    state: { city: string }) => ({
+        city: state.city
+    }),
     { changeCity }
 )(Hello)

@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios, { AxiosResponse } from 'axios'
-import { stateType, FilmListProps } from '../state/FilmList'
-import { Link, Route, Routes } from 'react-router-dom'
-import FilmDetail from '../pages/film/FilmDetail'
-import { Redirect } from 'react-router'
+import { FilmState, FilmListProps } from '../state/FilmList'
+import { Link } from 'react-router-dom'
 
 export default function FilmListF(props: FilmListProps): JSX.Element {
     const reying_url: string = 'https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=2&k=3395555'
     const shangying_url: string = 'https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=1&k=5970059'
-    const [list, setList] = useState<stateType["list"]>([])
+    const [list, setList] = useState<FilmState["list"]>([])
     const getFileList = async (url: string): Promise<void> => {
         const res: AxiosResponse<any, any> = await axios({
             method: 'GET',
@@ -20,6 +18,7 @@ export default function FilmListF(props: FilmListProps): JSX.Element {
         })
         setList(res?.data?.data?.films)
     }
+    // 根据type请求数据
     useEffect(() => {
         if (Number(props.type) === 1) {
             getFileList(reying_url)

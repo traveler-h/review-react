@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import axios, { AxiosResponse } from 'axios'
-import { stateType, FilmListProps } from '../state/FilmList'
+import { FilmState, FilmListProps } from '../state/FilmList'
 import {httpEnun} from '../enums/httpEnums'
 
 
 export default class FilmList extends Component<FilmListProps> {
     reying_url: string = 'https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=2&k=3395555'
     shangying_url: string = 'https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=1&k=5970059'
-    state: stateType = {
+    state: FilmState = {
         list: [],
         type: 1
     }

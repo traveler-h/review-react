@@ -1,6 +1,8 @@
 import FilmDetail from "../pages/film/FilmDetail";
 import FilmList from "../pages/film/FilmList";
-import {_RouteObject} from '../state/RouterState'
+import { _RouteObject } from '../state/RouterState'
+
+// 电影路由
 const NavRouter: _RouteObject[] = [
     {
         path: '/film/',

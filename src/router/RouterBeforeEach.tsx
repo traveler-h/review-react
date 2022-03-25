@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { checkRouterAuth } from './index'
 import { useEffect, useState } from 'react'
 
+// 路由拦截， 判断是否登录和有无操作权限
 const RouterBeforeEach = () => {
     const navigate = useNavigate()
     const location = useLocation()

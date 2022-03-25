@@ -6,6 +6,8 @@ import FilmRoutes from './filmRoutes'
 import NotFound from "../pages/NotFound"
 import FilmsLayout from "../layout/FilmsLayout"
 import { Suspense } from "react"
+
+// 汇总路由
 const routerMap: _RouteObject[] = [
     {
         path: '/',
@@ -43,7 +45,7 @@ const checkAuth = (routers: _RouteObject[], path: String): _RouteObject | null =
     return null
 }
 
-// 路由处理方式
+// 路由处理  加载优化
 const generateRouter = (routers: RouteObject[]): RouteObject[] => {
     return routers.map((item: any) => {
         if (item.children) {
@@ -60,6 +62,8 @@ const generateRouter = (routers: RouteObject[]): RouteObject[] => {
 
 
 const Routers = () => useRoutes(routerMap)
+
+// 判断路由权限
 const checkRouterAuth = (path: String) => {
     let auth = null
     auth = checkAuth(routerMap, path)
