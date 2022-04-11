@@ -1,0 +1,13 @@
+.list{
+    margin: 1rem;
+    padding: 0;
+    box-sizing: border-box;
+}
+.list-item {
+    margin-bottom: 2rem;
+    list-style: none;
+}
+
+.poster {
+    max-width: 100%;
+}

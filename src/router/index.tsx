@@ -6,6 +6,10 @@ import FilmRoutes from './filmRoutes'
 import NotFound from "../pages/NotFound"
 import FilmsLayout from "../layout/FilmsLayout"
 import { Suspense } from "react"
+import AdminLayout from "../layout/AdminLayout"
+import MobileLayout from "../layout/MobileLayout"
+import AdminRoutes from "./adminRoutes"
+import MobileRoutes from "./mobileRoutes"
 
 // 汇总路由
 const routerMap: _RouteObject[] = [
@@ -23,6 +27,22 @@ const routerMap: _RouteObject[] = [
         element: <FilmsLayout />,
         children: [
             ...FilmRoutes,
+        ],
+    },
+    {
+        path: '/admin',
+        auth: true,
+        element: <AdminLayout />,
+        children: [
+            ...AdminRoutes,
+        ],
+    },
+    {
+        path: '/mobile',
+        auth: true,
+        element: <MobileLayout />,
+        children: [
+            ...MobileRoutes,
         ],
     },
     { 

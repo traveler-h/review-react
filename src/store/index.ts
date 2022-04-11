@@ -5,12 +5,19 @@
 //引入createStore，专门用于创建redux中最为核心的store对象
 import { createStore, applyMiddleware } from 'redux'
 //引入汇总之后的reducer
-import reducer from './reducers'
+import reducer, { persistConfig } from './reducers'
 //引入redux-thunk，用于支持异步action
 import thunk from 'redux-thunk'
 //引入redux-devtools-extension
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { persistStore, persistReducer } from 'redux-persist'
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+const store = createStore(persistedReducer,composeWithDevTools(applyMiddleware(thunk)))
+let persistor = persistStore(store);
 
 //暴露store 
 // export default createStore(reducer)
-export default createStore(reducer,composeWithDevTools(applyMiddleware(thunk)))
+export default store
+export {persistor}
+

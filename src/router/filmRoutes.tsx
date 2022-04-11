@@ -13,7 +13,7 @@ const NavRouter: _RouteObject[] = [
     {
         path: '/film/:id',
         name: 'FilmDetail',
-        element: <FilmDetail />
+        element: <FilmDetail  />
     }
 ]
 export default NavRouter
