@@ -1,5 +1,5 @@
-import AntdMobile from "../pages/antdMobile"
-import { _RouteObject } from "../state/RouterState"
+import AntdMobile from '../pages/antdMobile';
+import { _RouteObject } from '../state/RouterState';
 
 const MobileRoutes: _RouteObject[] = [
     {
@@ -7,5 +7,5 @@ const MobileRoutes: _RouteObject[] = [
         name: 'Mobile',
         element: <AntdMobile />
     }
-]
-export default MobileRoutes
+];
+export default MobileRoutes;

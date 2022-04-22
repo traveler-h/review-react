@@ -1,11 +1,12 @@
-import { Route, RouteObject } from 'react-router-dom'
-import { Outlet, Routes } from 'react-router-dom'
-import { generateRouter } from '../router'
-import AdminRouters from '../router/adminRoutes'
+import { Route, RouteObject } from 'react-router-dom';
+import { Outlet, Routes } from 'react-router-dom';
+
+import { generateRouter } from '../router';
+import AdminRouters from '../router/adminRoutes';
 
 export default function AdminLayout() {
     // 路由处理方式
-    const FinlyRoutes: RouteObject[] = generateRouter(AdminRouters)
+    const FinlyRoutes: RouteObject[] = generateRouter(AdminRouters);
     return (
         <div>
             <Routes>
@@ -16,5 +17,5 @@ export default function AdminLayout() {
             </Routes>
             <Outlet />
         </div>
-    )
+    );
 }

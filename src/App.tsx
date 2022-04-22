@@ -1,6 +1,7 @@
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+
 import './App.css';
-import {Routers} from './router'
+import { Routers } from './router';
 
 function App() {
     return (

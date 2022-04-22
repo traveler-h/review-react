@@ -1,11 +1,11 @@
-import { Route, RouteObject } from 'react-router-dom'
-import { Outlet, Routes } from 'react-router-dom'
-import { generateRouter } from '../router'
-import FilmRoutes from '../router/filmRoutes'
+import { Outlet, Route, Routes, RouteObject } from 'react-router-dom';
+
+import { generateRouter } from '../router';
+import FilmRoutes from '../router/filmRoutes';
 
 export default function FilmLayout() {
     // 路由处理方式
-    const FinlyRoutes: RouteObject[] = generateRouter(FilmRoutes)
+    const FinlyRoutes: RouteObject[] = generateRouter(FilmRoutes);
     return (
         <div>
             <Routes>
@@ -16,5 +16,5 @@ export default function FilmLayout() {
             </Routes>
             <Outlet />
         </div>
-    )
+    );
 }

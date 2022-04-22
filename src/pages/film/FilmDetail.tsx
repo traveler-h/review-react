@@ -1,12 +1,13 @@
-import { List, Image } from 'antd-mobile';
+import { Image, List } from 'antd-mobile';
 import axios, { AxiosResponse } from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+
 import MYSwiper from '../../components/Swiper';
 
 export default function FilmDetail() {
-  const params = useParams()
-  const [detail, setDetail] = useState<any>({})
+  const params = useParams();
+  const [detail, setDetail] = useState<any>({});
   const getFileDetail = async (id: string): Promise<void> => {
     const res: AxiosResponse<any, any> = await axios({
       method: 'GET',
@@ -19,17 +20,17 @@ export default function FilmDetail() {
         'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.2.0","e":"1648710866104560978821121","bc":"110100"}',
         'X-Host': 'mall.film-ticket.film.info'
       }
-    })
-    setDetail(res?.data?.data?.film)
-  }
+    });
+    setDetail(res?.data?.data?.film);
+  };
   useEffect(() => {
-    getFileDetail((params.id as string))
-  }, [params.id])
+    getFileDetail((params.id as string));
+  }, [params.id]);
   return (
     <div>
-      {detail?.name}
+      <div>{detail?.name}</div>
       {detail?.photos && <MYSwiper loop={true} autoplay={true} list={detail?.photos}></MYSwiper>}
-      <List header='演员列表'>
+      <List header="演员列表">
         {detail?.actors && detail?.actors.map((user: any) => (
           <List.Item
             key={user.name}
@@ -37,7 +38,7 @@ export default function FilmDetail() {
               <Image
                 src={user.avatarAddress}
                 style={{ borderRadius: 20 }}
-                fit='cover'
+                fit="cover"
                 width={40}
                 height={40}
               />
@@ -48,6 +49,8 @@ export default function FilmDetail() {
           </List.Item>
         ))}
       </List>
+      <div>电影时常：{detail.runtime} | {detail.nation}</div>
+      <div>{detail.synopsis}</div>
     </div>
-  )
+  );
 }

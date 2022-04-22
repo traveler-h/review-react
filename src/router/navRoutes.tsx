@@ -1,8 +1,9 @@
-import { element } from "prop-types";
-import Hello from "../pages/Hello"
-import Home from "../pages/Home"
-import FilmList from "../pages/film/FilmList"
-import {_RouteObject} from '../state/RouterState'
+import { element } from 'prop-types';
+
+import FilmList from '../pages/film/FilmList';
+import Hello from '../pages/Hello';
+import Home from '../pages/Home';
+import { _RouteObject } from '../state/RouterState';
 
 // 导航部分路由
 const NavRouter: _RouteObject[] = [
@@ -21,5 +22,5 @@ const NavRouter: _RouteObject[] = [
         name: 'Film',
         element: <FilmList />
     }
-]
-export default NavRouter
+];
+export default NavRouter;

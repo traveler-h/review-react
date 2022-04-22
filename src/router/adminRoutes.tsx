@@ -1,11 +1,11 @@
-import AntdPro from "../pages/antdPro"
-import { _RouteObject } from "../state/RouterState"
+import AntdPro from '../pages/antdPro';
+import { _RouteObject } from '../state/RouterState';
 
-const AdminRoutes: _RouteObject[] = [
+const adminRoutes: _RouteObject[] = [
     {
         path: '/admin',
         name: 'Admin',
         element: <AntdPro />
     }
-]
-export default AdminRoutes
+];
+export default adminRoutes;

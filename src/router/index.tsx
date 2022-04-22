@@ -1,15 +1,17 @@
-import { RouteObject, useRoutes } from "react-router-dom"
-import { _RouteObject } from '../state/RouterState'
-import NavLayout from '../layout/NavLayout'
-import NavRoutes from './navRoutes'
-import FilmRoutes from './filmRoutes'
-import NotFound from "../pages/NotFound"
-import FilmsLayout from "../layout/FilmsLayout"
-import { Suspense } from "react"
-import AdminLayout from "../layout/AdminLayout"
-import MobileLayout from "../layout/MobileLayout"
-import AdminRoutes from "./adminRoutes"
-import MobileRoutes from "./mobileRoutes"
+import { Suspense } from 'react';
+import { useRoutes, RouteObject } from 'react-router-dom';
+
+import AdminLayout from '../layout/AdminLayout';
+import FilmsLayout from '../layout/FilmsLayout';
+import MobileLayout from '../layout/MobileLayout';
+import NavLayout from '../layout/NavLayout';
+import NotFound from '../pages/NotFound';
+import { _RouteObject } from '../state/RouterState';
+
+import AdminRoutes from './adminRoutes';
+import FilmRoutes from './filmRoutes';
+import MobileRoutes from './mobileRoutes';
+import NavRoutes from './navRoutes';
 
 // 汇总路由
 const routerMap: _RouteObject[] = [
@@ -18,76 +20,74 @@ const routerMap: _RouteObject[] = [
         auth: true,
         element: <NavLayout />,
         children: [
-            ...NavRoutes,
-        ],
+            ...NavRoutes
+        ]
     },
     {
         path: '/film',
         auth: true,
         element: <FilmsLayout />,
         children: [
-            ...FilmRoutes,
-        ],
+            ...FilmRoutes
+        ]
     },
     {
         path: '/admin',
         auth: true,
         element: <AdminLayout />,
         children: [
-            ...AdminRoutes,
-        ],
+            ...AdminRoutes
+        ]
     },
     {
         path: '/mobile',
         auth: true,
         element: <MobileLayout />,
         children: [
-            ...MobileRoutes,
-        ],
+            ...MobileRoutes
+        ]
     },
-    { 
+    {
         path: '/*',
         element: <NotFound/>
     }
-]
+];
 
-//根据路径获取路由
+// 根据路径获取路由
 const checkAuth = (routers: _RouteObject[], path: String): _RouteObject | null => {
     for (const data of routers) {
         if (data.path === path) {
-            return data
+            return data;
         }
         if (data.children) {
-            const res: _RouteObject | null = checkAuth(data.children, path)
-            if (res) return {...res, auth: data.auth}
+            const res: _RouteObject | null = checkAuth(data.children, path);
+            if (res) { return {...res, auth: data.auth}; }
         }
     }
-    return null
-}
+    return null;
+};
 
 // 路由处理  加载优化
 const generateRouter = (routers: RouteObject[]): RouteObject[] => {
     return routers.map((item: any) => {
         if (item.children) {
-            item.children = generateRouter(item.children)
+            item.children = generateRouter(item.children);
         }
         item.element = <Suspense fallback={<div>Loading</div>}>
             {/* 把懒加载的异步路由变成组件装载进去 */}
             {item.element}
-        </Suspense>
-        return item
-    })
-}
+        </Suspense>;
+        return item;
+    });
+};
 
-
-
-const Routers = () => useRoutes(routerMap)
+const Routers = () => useRoutes(routerMap);
 
 // 判断路由权限
 const checkRouterAuth = (path: String) => {
-    let auth = null
-    auth = checkAuth(routerMap, path)
-    return auth
-}
+    let auth = null;
+    auth = checkAuth(routerMap, path);
+    return auth;
+};
 
-export { Routers, checkRouterAuth, generateRouter }
+export { Routers, checkRouterAuth, generateRouter };

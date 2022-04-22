@@ -1,12 +1,11 @@
-import React from 'react'
 import { Swiper } from 'antd-mobile';
+import React from 'react';
 
 export default function MYSwiper(props: any) {
-    console.log(props);
     return (
         <Swiper
             indicatorProps={{
-                color: 'primary',
+                color: 'primary'
             }}
             loop={props.loop}
             autoplay={props.autoplay}
@@ -19,10 +18,10 @@ export default function MYSwiper(props: any) {
                 props.list.map((item: any) =>
                     <Swiper.Item key={item.bannerId || item}>
                         <img src={item.imgUrl || item} alt={item.name} style={{
-                            'width': '100%'
+                            width: '100%'
                         }} />
                     </Swiper.Item>)
             }
         </Swiper>
-    )
+    );
 }

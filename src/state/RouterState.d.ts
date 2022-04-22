@@ -5,5 +5,5 @@ export interface _RouteObject {
     index?: boolean;
     path: string;
     name?: string;
-    auth?: boolean
+    auth?: boolean;
 }

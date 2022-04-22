@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
-import { Layout, Menu } from 'antd';
 import {
-    MenuUnfoldOutlined,
     MenuFoldOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
+    MenuUnfoldOutlined,
     UploadOutlined,
+    UserOutlined,
+    VideoCameraOutlined
 } from '@ant-design/icons';
-import '../../style/pages/antdPro.css'
+import { Layout, Menu } from 'antd';
+import React, { useState } from 'react';
+
+import '../../style/pages/antdPro.css';
 
 const { Header, Sider, Content } = Layout;
 
 export default function AntdPro(props: any) {
-    const [collapsed, setCollapsed] = useState<boolean>(false)
+    const [collapsed, setCollapsed] = useState<boolean>(false);
 
     const toggle = () => {
-        setCollapsed(!collapsed)
+        setCollapsed(!collapsed);
     };
 
     return (
@@ -38,7 +39,7 @@ export default function AntdPro(props: any) {
                 <Header className="site-layout-background" style={{ padding: 0 }}>
                     {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                         className: 'trigger',
-                        onClick: toggle,
+                        onClick: toggle
                     })}
                 </Header>
                 <Content
@@ -46,12 +47,12 @@ export default function AntdPro(props: any) {
                     style={{
                         margin: '24px 16px',
                         padding: 24,
-                        minHeight: 280,
+                        minHeight: 280
                     }}
                 >
                     Content
                 </Content>
             </Layout>
         </Layout>
-    )
+    );
 }
