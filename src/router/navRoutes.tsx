@@ -12,6 +12,7 @@ const NavRouter: _RouteObject[] = [
         name: 'Home',
         element: <Home />
     },
+    // 在此页面引入了腾讯地图， 做路由单元测试的时候要注释掉（目前不会修改）
     {
         path: '/Hello',
         name: 'Hello',

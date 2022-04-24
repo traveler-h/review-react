@@ -4,7 +4,7 @@ import { useLocation, useNavigate, Navigate, Outlet } from 'react-router-dom';
 import { checkRouterAuth } from './index';
 
 // 路由拦截， 判断是否登录和有无操作权限
-const routerBeforeEach = () => {
+const RouterBeforeEach = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [auth, setAuth] = useState(false);
@@ -25,4 +25,4 @@ const routerBeforeEach = () => {
     return auth ? <Outlet /> : <Navigate replace to="/login" />;
 };
 
-export default routerBeforeEach;
+export default RouterBeforeEach;

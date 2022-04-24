@@ -17,8 +17,8 @@ function Hello(props: any) {
     <div>
       <QMap
         center={{
-          lat: 22.54073,
-          lng: 113.933571
+          lng: 116.397469,
+          lat: 39.908821
         }}
         style={{ height: '1000px' }}
         zoom={16}
